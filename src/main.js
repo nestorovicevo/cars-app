@@ -4,13 +4,16 @@ import Router from 'vue-router'
 
 
 import AppCars from './components/AppCars';
+import AddCar from './components/AddCar';
+
 
 const routes = [
   { 
     path: '/cars',
     name: 'cars',
     component: AppCars
-  }
+  },
+  { path: '/add', name: 'add', component: AddCar}
 ]
 Vue.use(Router)
 const router = new Router({
