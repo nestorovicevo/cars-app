@@ -1,20 +1,24 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 
 
-import AppCars from './components/AppCars'
+import AppCars from './components/AppCars';
 
 const routes = [
-  {path: '/', component: AppCars, redirect: '/cars'}
+  { 
+    path: '/cars',
+    name: 'cars',
+    component: AppCars
+  }
 ]
-
-const router = new VueRouter({
-  router: routes,
+Vue.use(Router)
+const router = new Router({
+  routes,
   mode: 'history'
 })
 
-Vue.use(VueRouter)
+
 Vue.config.productionTip = false
 
 new Vue({
