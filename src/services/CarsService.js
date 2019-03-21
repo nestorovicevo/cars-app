@@ -1,9 +1,9 @@
-import axios from 'axios';
+// import axios from 'axios'
 import { httpService } from './HttpService';
 
 class CarsService {
-    
-    create(car){
+
+    add(car){
         return httpService.post('/cars', car)
     }
 

@@ -7,14 +7,12 @@
 </template>
 
 <script>
-import AppCars from './components/AppCars';
 
 export default {
   name: 'app',
   components: {
-    AppCars
   },
-  
+
   data(){
     return{
       cars: []
@@ -27,7 +25,7 @@ export default {
     // .then(response=> response.data)
     // .then(data=> {
     //   this.cars= data;
-    
+
     // carsService.create({
     //   "brand": "string",
     //   "model": "string",
@@ -49,7 +47,7 @@ export default {
     // .catch(e=> {
     //   console.log(e);
     // });
-    
+
   }
 
 
@@ -57,5 +55,5 @@ export default {
 </script>
 
 <style>
-    
+
 </style>

@@ -2,7 +2,7 @@
     <div>
         <h1>Add Car</h1><br>
         <hr>
-        <form @submit.prevent="create">
+        <form @submit.prevent="addCar">
       <div>
         Brand:<br>
         <input type="text" v-model="car.brand" name="brand">
@@ -44,7 +44,16 @@ export default {
 
     data(){
        return{
-           cars : []
+           cars : [],
+           car: {
+             "brand": "string",
+              "model": "string",
+              "year": 0,
+              "maxSpeed": 0,
+              "isAutomatic": true,
+              "engine": "string",
+              "numberOfDoors": 0
+           }
        }
     },
 
@@ -55,24 +64,50 @@ export default {
     }
     },
 
-     created(){
-    carsService.create({
-      "brand": "string",
-      "model": "string",
-      "year": 0,
-      "maxSpeed": 0,
-      "isAutomatic": true,
-      "engine": "string",
-      "numberOfDoors": 0
-    })
-    .then(response =>response.data)
-    .then(data=> {
-      console.log(data)
-    })
-    .catch(e=>{
-      console.log(e)
-      })
-  }
+    methods: {
+    //   addCar(){
+    //     carsService.create({
+    //   "brand": "string",
+    //   "model": "string",
+    //   "year": 0,
+    //   "maxSpeed": 0,
+    //   "isAutomatic": true,
+    //   "engine": "string",
+    //   "numberOfDoors": 0
+    // })
+    // .then(response =>response.data)
+    // .then(data=> {
+    //   console.log(data)
+    // })
+    // .catch(e=>{
+    //   console.log(e)
+    //   })
+    //   }
+    // },
+
+        async addCar(){
+          try{
+            const{ data } = await carsService.add(this.car);
+            this.cars = data;
+
+            const { data: newCar } = await carsService.add({
+              "brand": "string",
+              "model": "string",
+              "year": 0,
+              "maxSpeed": 0,
+              "isAutomatic": true,
+              "engine": "string",
+              "numberOfDoors": 0
+            });
+            console.log(newCar);
+            this.$router.push({name: 'cars'});
+          }
+          catch(error){
+            console.log(error);
+          }
+        }
+
+    }
 
 }
 </script>
