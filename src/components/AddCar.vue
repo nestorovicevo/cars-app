@@ -2,7 +2,7 @@
     <div>
         <h1>Add Car</h1><br>
         <hr>
-        <form @submit.prevent="addCar">
+        <form @submit.prevent="addCar" @reset="resetForm(e)">
       <div>
         Brand:<br>
         <input type="text" v-model="car.brand" name="brand">
@@ -32,6 +32,8 @@
         <input type="radio" name="engine" value="car"> Electric<br>
       </div>
      <button type="submit">Add car</button>
+     <button type="reset">Reset</button>
+
     </form>
     </div>
 </template>
@@ -46,8 +48,8 @@ export default {
        return{
            cars : [],
            car: {
-             "brand": "string",
-              "model": "string",
+             "brand": "",
+              "model": "",
               "year": 0,
               "maxSpeed": 0,
               "isAutomatic": true,
@@ -105,8 +107,12 @@ export default {
           catch(error){
             console.log(error);
           }
-        }
+        },
 
+        resetForm(e) {
+            e.preventDefault()
+            this.$data.text = ""
+        }
     }
 
 }
