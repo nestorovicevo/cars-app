@@ -31,8 +31,10 @@
         <input type="radio" name="engine" value="car"> Petrol<br>
         <input type="radio" name="engine" value="car"> Electric<br>
       </div>
-     <button type="submit">Add car</button>
-     <button type="reset">Reset</button>
+     <button type="submit" class="btn btn-default">Add car</button>
+     <button type="reset" class="btn btn-default">Reset</button>
+    <button name="preview" type="button" @click="previewData" class="btn btn-default">Preview</button>
+
 
     </form>
     </div>
@@ -112,6 +114,18 @@ export default {
         resetForm(e) {
             e.preventDefault()
             this.$data.text = ""
+        },
+
+        previewData(){
+           alert(`
+        brand: ${this.car.brand}
+        model: ${this.car.model}
+        year: ${this.car.year}
+        maximumSpeed: ${this.car.maxSpeed}
+        numberOfDoors: ${this.car.numberOfDoors}
+        engine: ${(this.car.model)}
+        ${this.car.isAutomatic ? 'Automatic' : 'Manual'}
+      `)
         }
     }
 
